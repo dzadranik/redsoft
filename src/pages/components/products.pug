@@ -1,0 +1,19 @@
+- var products = [{name: '«Рождение Венеры» Сандро Боттичелли', cost: '2 000 000 $', oldCost: '1 000 000 $'}, {name: '«Тайная вечеря»  Леонардо да Винчи', cost: '3 000 000 $'}, {name: '«Сотворение Адама» Микеланджело', cost: '5 000 000 $', oldCost: '6 000 000 $'}, {name: '«Урок анатомии»  Рембрандт', class: 'product__item-sold'}]
+
+.product#product
+    each product, index in products
+        .product__item(class=product.class)
+            .product__img
+                img(src="img/product-" + (index + 1) + ".jpg" alt="")
+            .product__name= product.name
+
+            .product__info
+                if product.cost
+                    .product__costs
+                        if product.oldCost
+                            .product__cost-old= product.oldCost
+                        .product__cost= product.cost
+                    button.btn.js-product(data-id=(index + 1)) Купить
+
+                else 
+                    .product__sold-title Продана на аукционе
